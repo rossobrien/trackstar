@@ -42,6 +42,7 @@ class Project extends CActiveRecord
 		return array(
 			array('create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>128),
+			array('name, description', 'required'),
 			array('description, create_time, update_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
