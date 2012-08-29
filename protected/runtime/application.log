@@ -19,3 +19,42 @@ Stack trace:
 REQUEST_URI=/trackstar/index.php?r=project/admin
 HTTP_REFERER=http://localhost/trackstar/index.php?r=project/create
 ---
+2012/08/29 22:21:00 [error] [exception.CException] exception 'CException' with message 'Property "IssueController._project" is not defined.' in C:\wamp\www\libs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\www\trackstar\protected\controllers\IssueController.php(198): CComponent->__get('_project')
+#1 C:\wamp\www\trackstar\protected\controllers\IssueController.php(43): IssueController->loadProject(NULL)
+#2 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): IssueController->filterProjectContext(Object(CFilterChain))
+#3 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#4 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('create')
+#11 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/create')
+#12 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/create
+HTTP_REFERER=http://localhost/trackstar/index.php?r=issue
+---
+2012/08/29 22:23:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist!' in C:\wamp\www\trackstar\protected\controllers\IssueController.php:208
+Stack trace:
+#0 C:\wamp\www\trackstar\protected\controllers\IssueController.php(46): IssueController->loadProject(NULL)
+#1 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): IssueController->filterProjectContext(Object(CFilterChain))
+#2 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('create')
+#10 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/create')
+#11 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/create
+HTTP_REFERER=http://localhost/trackstar/index.php?r=issue
+---

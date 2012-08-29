@@ -24,6 +24,16 @@
  */
 class Issue extends CActiveRecord
 {
+	//Define constants for issue types
+	const TYPE_BUG = 0;
+	const TYPE_FEATURE = 1;
+	const TYPE_TASK = 2;
+	
+	//Define constants for issue statuses
+	const STATUS_NEW = 0;
+	const STATUS_IN_PROGRESS = 1;
+	const STATUS_FINISHED = 2;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -123,5 +133,29 @@ class Issue extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	/**
+	 * @return array issue type names indexed by type IDs
+	 */
+	public function getTypeOptions()
+	{
+		return array(
+				self::TYPE_BUG => 'Bug',
+				self::TYPE_FEATURE => 'Feature',
+				self::TYPE_TASK => 'Task',
+		);
+	}
+	
+	/**
+	 * @return array issue status names indexed by status IDs
+	 */
+	public function getStatusOptions()
+	{
+		return array(
+				self::STATUS_NEW => 'New',
+				self::STATUS_IN_PROGRESS => 'In Progress',
+				self::STATUS_FINISHED => 'Finished',
+		);
 	}
 }
