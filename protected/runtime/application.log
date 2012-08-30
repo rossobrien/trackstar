@@ -58,3 +58,42 @@ Stack trace:
 REQUEST_URI=/trackstar/index.php?r=issue/create
 HTTP_REFERER=http://localhost/trackstar/index.php?r=issue
 ---
+2012/08/30 14:52:55 [error] [php] Missing argument 1 for ProjectController::loadModel(), called in C:\wamp\www\trackstar\protected\controllers\ProjectController.php on line 57 and defined (C:\wamp\www\trackstar\protected\controllers\ProjectController.php:162)
+Stack trace:
+#0 C:\wamp\www\libs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 C:\wamp\www\libs\yii\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 C:\wamp\www\libs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(134): ProjectController->runAction()
+#4 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CAccessControlFilter->filter()
+#6 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): ProjectController->filterAccessControl()
+#7 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 C:\wamp\www\libs\yii\framework\web\CController.php(266): ProjectController->runActionWithFilters()
+#10 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): ProjectController->run()
+#11 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 C:\wamp\www\trackstar\index.php(13): CWebApplication->run()
+REQUEST_URI=/trackstar/index.php?r=project/view&id=1
+in C:\wamp\www\trackstar\protected\controllers\ProjectController.php (162)
+in C:\wamp\www\trackstar\protected\controllers\ProjectController.php (57)
+in C:\wamp\www\trackstar\index.php (13)
+2012/08/30 15:32:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist!' in C:\wamp\www\trackstar\protected\controllers\IssueController.php:215
+Stack trace:
+#0 C:\wamp\www\trackstar\protected\controllers\IssueController.php(46): IssueController->loadProject(NULL)
+#1 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): IssueController->filterProjectContext(Object(CFilterChain))
+#2 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('admin')
+#10 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/admin')
+#11 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/admin
+HTTP_REFERER=http://localhost/trackstar/index.php?r=issue/view&id=1
+---
