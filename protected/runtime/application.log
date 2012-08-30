@@ -97,3 +97,66 @@ Stack trace:
 REQUEST_URI=/trackstar/index.php?r=issue/admin
 HTTP_REFERER=http://localhost/trackstar/index.php?r=issue/view&id=1
 ---
+2012/08/30 18:37:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist!' in C:\wamp\www\trackstar\protected\controllers\IssueController.php:215
+Stack trace:
+#0 C:\wamp\www\trackstar\protected\controllers\IssueController.php(46): IssueController->loadProject(NULL)
+#1 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): IssueController->filterProjectContext(Object(CFilterChain))
+#2 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('index')
+#10 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/index')
+#11 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/index
+HTTP_REFERER=http://localhost/trackstar/index.php?r=issue/admin&pid=1
+---
+2012/08/30 18:46:56 [error] [exception.CException] exception 'CException' with message 'Issue and its behaviors do not have a method or closure named "loadProject".' in C:\wamp\www\libs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\wamp\www\libs\yii\framework\db\ar\CActiveRecord.php(226): CComponent->__call('loadProject', Array)
+#1 C:\wamp\www\trackstar\protected\controllers\IssueController.php(121): CActiveRecord->__call('loadProject', Array)
+#2 C:\wamp\www\trackstar\protected\controllers\IssueController.php(121): Issue->loadProject('1')
+#3 [internal function]: IssueController->actionUpdate('1')
+#4 C:\wamp\www\libs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(IssueController), Array)
+#5 C:\wamp\www\libs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(IssueController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\libs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#9 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#13 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('update')
+#15 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/update')
+#16 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#17 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/update&id=1
+---
+2012/08/30 18:47:19 [error] [exception.CException] exception 'CException' with message 'Property "IssueController.project_id" is not defined.' in C:\wamp\www\libs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 C:\wamp\www\trackstar\protected\controllers\IssueController.php(121): CComponent->__get('project_id')
+#1 [internal function]: IssueController->actionUpdate('1')
+#2 C:\wamp\www\libs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(IssueController), Array)
+#3 C:\wamp\www\libs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(IssueController), Object(ReflectionMethod), Array)
+#4 C:\wamp\www\libs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#7 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#11 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('update')
+#13 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/update')
+#14 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/update&id=1
+---

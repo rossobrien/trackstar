@@ -118,6 +118,7 @@ class IssueController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$this->loadProject($model->project_id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
