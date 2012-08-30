@@ -21,6 +21,9 @@
  */
 class User extends TrackstarActiveRecord
 {
+	
+	public $password_repeat;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -47,9 +50,11 @@ class User extends TrackstarActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email', 'required'),
+			array('email, username, password', 'required'),
 			array('email, username', 'unique'),
 			array('email, username, password', 'length', 'max'=>256),
+			array('password', 'compare'),
+			array('password_repeat', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, email, username, password, last_login_time, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
