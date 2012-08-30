@@ -10,17 +10,15 @@ $this->pageTitle=Yii::app()->name;
 <p>
 	You last logged in on <?=date('l, F d, Y, g:i a', Yii::app()->user->lastLoginTime);?>
 </p>
+
+<p>
+	<?=CHtml::link('Projects', array('project/index'));?>
+</p>
+<p>
+	<?=CHtml::link('Users', array('user/index'));?>
+</p>
 <? endif; ?>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<p>
+	Hi! This is the homepage!
+</p>

@@ -160,3 +160,38 @@ Stack trace:
 #16 {main}
 REQUEST_URI=/trackstar/index.php?r=issue/update&id=1
 ---
+2012/08/30 21:39:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects/index".' in C:\wamp\www\libs\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('projects/index')
+#1 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/trackstar/index.php?r=projects/index
+HTTP_REFERER=http://localhost/trackstar/index.php
+---
+2012/08/30 21:39:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "projects/view".' in C:\wamp\www\libs\yii\framework\web\CWebApplication.php:287
+Stack trace:
+#0 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('projects/view')
+#1 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#2 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/trackstar/index.php?r=projects/view
+---
+2012/08/30 21:39:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist!' in C:\wamp\www\trackstar\protected\controllers\IssueController.php:216
+Stack trace:
+#0 C:\wamp\www\trackstar\protected\controllers\IssueController.php(46): IssueController->loadProject(NULL)
+#1 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): IssueController->filterProjectContext(Object(CFilterChain))
+#2 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#3 C:\wamp\www\libs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#4 C:\wamp\www\libs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#5 C:\wamp\www\libs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\wamp\www\libs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\libs\yii\framework\web\CController.php(292): CFilterChain->run()
+#8 C:\wamp\www\libs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(283): CController->run('index')
+#10 C:\wamp\www\libs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('issue/index')
+#11 C:\wamp\www\libs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 C:\wamp\www\trackstar\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstar/index.php?r=issue/index
+---
