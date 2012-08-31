@@ -5,6 +5,8 @@ class ProjectTest extends CDbTestCase
 			'projects' => 'Project',
 			'users' => 'User',
 			'projUsrAssign' => ':tbl_project_user_assignment',
+			'projUsrRole' => ':tbl_project_user_role',
+			'authAssign' => ':authassignment',
 	);
 
 	public function testCreate()
@@ -70,5 +72,42 @@ class ProjectTest extends CDbTestCase
 		$options = $project->getUserOptions();
 		$this->assertTrue( is_array( $options ) );
 		$this->assertTrue( count( $options ) > 0 );
+	}
+	
+	public function testUserRoleAssignment()
+	{
+		$project = $this->projects('project1');
+		$user = $this->users('user1');
+		$this->assertEquals(1, $project->associateUserToRole('owner', $user->id));
+		$this->assertEquals(1, $project->removeUserFromRole('owner', $user->id));
+	}
+	
+	public function testIsInRole()
+	{
+		$row1 = $this->projUsrRole['row1'];
+		Yii::app()->user->setId($row1['user_id']);
+		$project = Project::model()->findByPk($row1['project_id']);
+		$this->assertTrue($project->isUserInRole('member'));
+	}
+	
+	public function testUserAccessBasedOnProjectRole()
+	{
+		$row1 = $this->projUsrRole['row1'];
+		Yii::app()->user->setId($row1['user_id']);
+		$project = Project::model()->findByPk($row1['project_id']);
+		$auth = Yii::app()->authManager;
+		$bizRule = 'return isset($params["project"]) && $params["project"]->isUserInRole("member");';
+		$auth->assign('member', $row1['user_id'], $bizRule);
+		$params = array('project'=>$project);
+		$this->assertTrue(Yii::app()->user->checkAccess('updateIssue', $params));
+		$this->assertTrue(Yii::app()->user->checkAccess('readIssue', $params));
+		$this->assertFalse(Yii::app()->user->checkAccess('updateProject', $params));
+		
+		//Check that user can't access projects they are not assigned to
+		$project = Project::model()->findByPk(1);
+		$params = array('project'=>$project);
+		$this->assertFalse(Yii::app()->user->checkAccess('updateIssue', $params));
+		$this->assertFalse(Yii::app()->user->checkAccess('readIssue', $params));
+		$this->assertFalse(Yii::app()->user->checkAccess('updateProject', $params));
 	}
 }
