@@ -28,7 +28,7 @@ class ProjectController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'index', 'view', 'create', and 'update' actions
-				'actions'=>array('index','view', 'create','update'),
+				'actions'=>array('index','view', 'create','update', 'adduser'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -122,6 +122,40 @@ class ProjectController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+	
+	/**
+	 * Add User to project
+	 */
+	public function actionAddUser($id)
+	{
+		$form = new ProjectUserForm();
+		$project = $this->loadModel($id);
+		
+		//Get form data
+		if(isset($_POST['ProjectUserForm']))
+		{
+			$form->attributes = $_POST['ProjectUserForm'];
+			$form->project = $project;
+			
+			//Validate and display success message
+			if($form->validate())
+			{
+				Yii::app()->user->setFlash('success',$form->username . "has been added to the project!");
+				$form = new ProjectUserForm();
+			}
+		}
+		
+		//display form
+		$users = User::model()->findAll();
+		$usernames = array();
+		foreach($users as $user)
+		{
+			$usernames[] = $user->username;
+		}
+		
+		$form->project = $project;
+		$this->render('adduser', array('model'=>$form,'usernames' => $usernames));
 	}
 
 	/**
