@@ -137,4 +137,27 @@ class Project extends TrackstarActiveRecord
 		$command->bindValue(':role', $role, PDO::PARAM_STR);
 		return $command->execute()==1 ? true : false;
 	}
+	
+	public static function getUserRoleOptions()
+	{
+		return CHtml::listData(Yii::app()->authManager->getRoles(),'name', 'name');
+	}
+	
+	public function associateUserToProject($user)
+	{
+		$sql = "INSERT INTO tbl_project_user_assignment (project_id, user_id) VALUES (:projectId, :userId)";
+		$command = Yii::app()->db->createCommand($sql);
+		$command->bindValue(':projectId', $this->id, PDO::PARAM_INT);
+		$command->bindValue(':userId', $user->id, PDO::PARAM_INT);
+		return $command->execute();
+	}
+	
+	public function isUserInProject($user)
+	{
+		$sql = "SELECT user_id FROM tbl_project_user_assignment WHERE project_id = :projectId AND user_id = :userId";
+		$command = Yii::app()->db->createCommand($sql);
+		$command->bindValue(':projectId', $this->id, PDO::PARAM_INT);
+		$command->bindValue(':userId', $user->id, PDO::PARAM_INT);
+		return $command->execute()==1 ? true : false;
+	}
 }

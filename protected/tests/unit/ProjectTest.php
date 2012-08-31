@@ -110,4 +110,19 @@ class ProjectTest extends CDbTestCase
 		$this->assertFalse(Yii::app()->user->checkAccess('readIssue', $params));
 		$this->assertFalse(Yii::app()->user->checkAccess('updateProject', $params));
 	}
+	
+	public function testGetUserRoleOptions()
+	{
+		$options = Project::getUserRoleOptions();
+		$this->assertEquals(count($options), 3);
+		$this->assertTrue(isset($options['reader']));
+		$this->assertTrue(isset($options['member']));
+		$this->assertTrue(isset($options['owner']));
+	}
+	
+	public function testUserProjectAssignment()
+	{
+		$this->projects('project2')->associateUserToProject($this->users('user1'));
+		$this->assertTrue($this->projects('project1')->isUserInProject($this->users('user1')));
+	}
 }
