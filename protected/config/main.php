@@ -3,10 +3,20 @@
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
+function _joinpath($dir1, $dir2) {
+	return realpath($dir1 . '/' . $dir2);
+}
+
+$homePath      = dirname(__FILE__) . '/../..';
+$protectedPath = _joinpath($homePath, 'protected');
+$webrootPath   = _joinpath($homePath, 'webroot');
+$runtimePath   = _joinpath($homePath, 'runtime');
+
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
-	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
+	'basePath'    => $protectedPath,
+	'runtimePath' => $runtimePath,
 	'name'=>'Trackstar',
 
 	// preloading 'log' component
