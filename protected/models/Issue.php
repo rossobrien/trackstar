@@ -81,6 +81,8 @@ class Issue extends TrackstarActiveRecord
 			'requester' => array(self::BELONGS_TO, 'User', 'requester_id'),
 			'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
 			'owner' => array(self::BELONGS_TO, 'User', 'owner_id'),
+			'commnets' => array(self::HAS_MANY, 'Comment', 'issue_id'),
+			'commentCount' => array(self::STAT, 'Comment', 'issue_id'),
 		);
 	}
 
