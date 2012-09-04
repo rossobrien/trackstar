@@ -47,3 +47,23 @@ $this->menu=array(
 		'update_user_id',
 	),
 )); ?>
+
+<div id="comments">
+	<? if($model->commentCount >= 1) : ?>
+	<h3>
+		<?=$model->commentCount > 1 ? $model->commentCount . ' comments' : 'One Comment'; ?>
+	</h3>
+	
+	<?=$this->renderPartial('_comments', array('comments'=>$model->comments,)); ?>
+	<? endif; ?>
+	
+	<h3>Leave a Comment</h3>
+	
+	<? if (Yii::app()->user->hasFlash('commentSubmitted')) : ?>
+	<div class="flash-success">
+		<?=Yii::app()->user->getFlash('commentSubmitted'); ?>
+	</div>
+	<? else : ?>
+		<? $this->renderPartial('/comment/_form', array('model'=>$comment,));?>
+	<? endif; ?>
+</div>
