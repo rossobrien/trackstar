@@ -81,6 +81,8 @@ class Issue extends TrackstarActiveRecord
 			'requester' => array(self::BELONGS_TO, 'User', 'requester_id'),
 			'project' => array(self::BELONGS_TO, 'Project', 'project_id'),
 			'owner' => array(self::BELONGS_TO, 'User', 'owner_id'),
+			'comments' => array(self::HAS_MANY, 'Comment', 'issue_id'),
+			'commentCount' => array(self::STAT, 'Comment', 'issue_id'),
 		);
 	}
 
@@ -176,5 +178,14 @@ class Issue extends TrackstarActiveRecord
 	{
 		$typeOptions = $this->getTypeOptions();
 		return isset($typeOptions[$this->type_id]) ? $typeOptions[$this->type_id] : "Unknown Type! ({$this->type_id})";
+	}
+	
+	/*
+	 * Add comment to this issue
+	 */
+	public function addComment($comment)
+	{
+		$comment->issue_id=$this->id;
+		return $comment->save();
 	}
 }
